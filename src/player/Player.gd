@@ -20,6 +20,7 @@ func _physics_process(delta):
 	# get left right input. 1 is right, -1 is left
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
+	
 	#left right motion
 	motion.x = x_input * max_speed
 	
@@ -62,6 +63,7 @@ func _physics_process(delta):
 	
 	
 	motion = move_and_slide_with_snap(motion, snapVector, Vector2.UP, true)
+	
 	
 #	FPS:
 #	print(Engine.get_frames_per_second())
