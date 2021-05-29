@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
+onready var glob = $"/root/GlobalSettings"
 
-export var MAX_SPEED = 120
-export var GRAVITY = 800
-export var JUMP_FORCE = 250
-export var JUMP_LIMITER = 0.4 # release jump key to go to force * limiter speed.
-export var JUMP_GRAVITY_REDUCT = 0.3 # reduction of gravity during jump up.
-export var EARLY_JUMP_TIME = 3 # amount of frames you can press jump before floor.
+export var max_speed = 120
+export var jump_force = 250
+export var jump_limiter = 0.4 # release jump key to go to force * limiter speed.
+export var jump_gravity_reduct = 0.3 # reduction of gravity during jump up.
+export var early_jump_time = 3 # amount of frames you can press jump before floor.
 
 var motion = Vector2.ZERO
 var earlyJump = 0
@@ -21,7 +21,7 @@ func _physics_process(delta):
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	
 	#left right motion
-	motion.x = x_input * MAX_SPEED
+	motion.x = x_input * max_speed
 	
 	if x_input != 0:
 		# true when -1 when left.
@@ -30,7 +30,7 @@ func _physics_process(delta):
 	else:
 		animatedSprite.play("idle")
 	
-	motion.y += GRAVITY * delta
+	motion.y += glob.gravity * delta
 	
 	var snapVector = Vector2.ZERO
 	
@@ -38,19 +38,19 @@ func _physics_process(delta):
 	#wasOnFloor is the state of the previous frame.
 	if wasOnFloor:
 		if Input.is_action_just_pressed("move_jump") or earlyJump > 0:
-			motion.y = -JUMP_FORCE
+			motion.y = -jump_force
 		else:
 			snapVector = Vector2.DOWN * 10
 	else:
 		animatedSprite.play("jump")
-		if Input.is_action_pressed("move_jump") and motion.y < -JUMP_FORCE * JUMP_LIMITER:
-			motion.y -= GRAVITY * delta * JUMP_GRAVITY_REDUCT
+		if Input.is_action_pressed("move_jump") and motion.y < -jump_force * jump_limiter:
+			motion.y -= glob.gravity * delta * jump_gravity_reduct
 		
-		if Input.is_action_just_released("move_jump") and motion.y <  -JUMP_FORCE * JUMP_LIMITER:
-			motion.y =  -JUMP_FORCE * JUMP_LIMITER
+		if Input.is_action_just_released("move_jump") and motion.y <  -jump_force * jump_limiter:
+			motion.y =  -jump_force * jump_limiter
 			
 		if Input.is_action_just_pressed("move_jump"):
-			earlyJump = EARLY_JUMP_TIME
+			earlyJump = early_jump_time
 		
 	if is_on_floor():
 		wasOnFloor = true
