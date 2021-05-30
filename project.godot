@@ -88,6 +88,11 @@ _global_script_classes=[ {
 "class": "GEUtils",
 "language": "GDScript",
 "path": "res://addons/Godoxel/Util.gd"
+}, {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://git_api.gdns"
 } ]
 _global_script_class_icons={
 "BrushPrefabs": "",
@@ -105,7 +110,8 @@ _global_script_class_icons={
 "GEPencil": "",
 "GERainbow": "",
 "GERect": "",
-"GEUtils": ""
+"GEUtils": "",
+"GitAPI": ""
 }
 
 [application]
@@ -130,6 +136,10 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/Godoxel/plugin.cfg" )
+
+[gdnative]
+
+singletons=[ "res://git_api.gdnlib" ]
 
 [input]
 
