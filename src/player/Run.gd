@@ -5,11 +5,10 @@ onready var glob = $"/root/GlobalSettings"
 
 func enter(_msg := {}):
 	owner.animated_sprite.play("run")
+	
+	# show landing sprite
 	if _msg.has("landing"):
 		owner.animated_sprite.set_frame(1)
-		print("landed")
-	
-
 
 func physics_update(delta: float) -> void:
 

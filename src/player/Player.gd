@@ -15,6 +15,7 @@ var wasOnFloor = false
 
 onready var animated_sprite = $AnimatedSprite
 
+
 func _physics_process(delta):
 #
 #	# get left right input. 1 is right, -1 is left
