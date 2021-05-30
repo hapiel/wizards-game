@@ -89,10 +89,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/Godoxel/Util.gd"
 }, {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://git_api.gdns"
+}, {
+"base": "Node",
+"class": "State",
+"language": "GDScript",
+"path": "res://src/misc/state/State.gd"
+}, {
+"base": "Node",
+"class": "StateMachine",
+"language": "GDScript",
+"path": "res://src/misc/state/StateMachine.gd"
 } ]
 _global_script_class_icons={
 "BrushPrefabs": "",
@@ -111,7 +121,9 @@ _global_script_class_icons={
 "GERainbow": "",
 "GERect": "",
 "GEUtils": "",
-"GitAPI": ""
+"GitAPI": "",
+"State": "",
+"StateMachine": ""
 }
 
 [application]
@@ -140,6 +152,11 @@ enabled=PoolStringArray( "res://addons/Godoxel/plugin.cfg" )
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]
+
+[global]
+
+action=false
+input=false
 
 [input]
 
@@ -185,11 +202,11 @@ move_down={
 [layer_names]
 
 2d_physics/layer_1="player"
-2d_physics/layer_2="enemy"
-2d_physics/layer_3="obj"
-2d_physics/layer_4="enemy collider"
-2d_physics/layer_5="floor"
-2d_physics/layer_6="enemy top"
+2d_physics/layer_2="floor"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="enemy_collider (temp?)"
+2d_physics/layer_5="spell"
+2d_physics/layer_6="enemy_top (temp?)"
 
 [rendering]
 

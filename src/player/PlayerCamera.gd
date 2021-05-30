@@ -12,7 +12,7 @@ var facing = 0
 
 onready var prev_camera_pos = get_camera_position()
 onready var tween = $ShiftTween
-onready var player = get_parent()
+#onready var player = get_parent()
 
 func _ready():
 	# adjust limits based on tilemaps in scene
@@ -25,7 +25,7 @@ func _physics_process(delta):
 	
 
 func check_facing():
-	var new_facing = sign(player.motion.x)
+	var new_facing = sign(owner.velocity.x)
 	if new_facing != 0 && facing != new_facing:
 		facing = new_facing
 		var target_offset = get_viewport_rect().size.x * facing * look_ahead_factor
