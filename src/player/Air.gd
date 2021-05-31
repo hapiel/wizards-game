@@ -22,7 +22,11 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("move_jump") and owner.velocity.y <  -owner.jump_force * owner.jump_limiter:
 		owner.velocity.y =  -owner.jump_force * owner.jump_limiter
 	
-	owner.velocity.y += glob.gravity * delta
+	if owner.velocity.y > 150:
+		owner.velocity.y += glob.gravity * delta * 1.4
+	else:
+		owner.velocity.y += glob.gravity * delta 
+	
 	owner.velocity = owner.move_and_slide(owner.velocity, Vector2.UP)
 
 	# Landing.
