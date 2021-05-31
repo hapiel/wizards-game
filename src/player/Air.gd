@@ -28,6 +28,6 @@ func physics_update(delta: float) -> void:
 	# Landing.
 	if owner.is_on_floor():
 		if is_equal_approx(owner.velocity.x, 0.0):
-			state_machine.transition_to("Idle")
+			state_machine.transition_to("Idle", {landing = true})
 		else:
 			state_machine.transition_to("Run", {landing = true})

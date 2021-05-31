@@ -43,7 +43,6 @@ height = 12.0
 ]]
 collision_mask = 2
 script = ExtResource( 2 )
-early_jump_time = 20
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
@@ -71,15 +70,27 @@ animation = "idle"
 position = Vector2( 1, -10 )
 shape = SubResource( 4 )
 
+[node name="EarlyJumpTimer" type="Timer" parent="."]
+wait_time = 0.35
+one_shot = true
+
+[node name="LandingTimer" type="Timer" parent="."]
+wait_time = 0.045
+one_shot = true
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
+early_jump_timer = NodePath("../../EarlyJumpTimer")
+landing_timer = NodePath("../../LandingTimer")
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
+early_jump_timer = NodePath("../../EarlyJumpTimer")
+landing_timer = NodePath("../../LandingTimer")
 
 [node name="Air" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
