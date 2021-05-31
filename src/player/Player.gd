@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-onready var glob = $"/root/GlobalSettings"
-
 export var speed = 120
 export var jump_force = 250
 export var jump_limiter = 0.4 # release jump key to go to force * limiter speed.

@@ -4,6 +4,7 @@ extends State
 onready var glob = $"/root/GlobalSettings"
 
 export (NodePath) onready var early_jump_timer = get_node(early_jump_timer)
+export(NodePath) onready var late_jump_timer = get_node(late_jump_timer)
 export(NodePath) onready var landing_timer = get_node(landing_timer)
 
 func enter(_msg := {}):
@@ -16,13 +17,16 @@ func enter(_msg := {}):
 
 func physics_update(delta: float) -> void:
 
+	# delay the falling
 	if not owner.is_on_floor():
-		state_machine.transition_to("Air")
-		return
+		if late_jump_timer.time_left == 0:
+			late_jump_timer.start()
 	
 	var input_direction_x = owner.get_input_direction()
 	owner.velocity.x = owner.speed * input_direction_x
-	owner.velocity.y += glob.gravity * delta
+	# only apply gravity if not in late_jump substate
+	if late_jump_timer.time_left == 0:
+		owner.velocity.y += glob.gravity * delta
 	owner.velocity = owner.move_and_slide_with_snap(owner.velocity, Vector2(0, 10), Vector2.UP, true)
 
 
@@ -32,3 +36,9 @@ func physics_update(delta: float) -> void:
 		
 	elif is_equal_approx(input_direction_x, 0.0):
 		state_machine.transition_to("Idle")
+
+
+func _on_LateJumpTimer_timeout():
+	state_machine.transition_to("Air")
+
+

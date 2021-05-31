@@ -1,6 +1,6 @@
 extends State
 
-export (NodePath) onready var early_jump_timer = get_node(early_jump_timer)
+export(NodePath) onready var early_jump_timer = get_node(early_jump_timer)
 export(NodePath) onready var landing_timer = get_node(landing_timer)
 
 # Upon entering the state, we set the Player node's velocity to zero.

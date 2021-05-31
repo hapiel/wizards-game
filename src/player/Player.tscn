@@ -73,10 +73,23 @@ shape = SubResource( 4 )
 [node name="EarlyJumpTimer" type="Timer" parent="."]
 wait_time = 0.35
 one_shot = true
+__meta__ = {
+"_editor_description_": "Amount of time you can press jump before hitting floor."
+}
+
+[node name="LateJumpTimer" type="Timer" parent="."]
+wait_time = 0.04
+one_shot = true
+__meta__ = {
+"_editor_description_": "Amount of time before 'air' state & full gravity kicks in after running off platform edge"
+}
 
 [node name="LandingTimer" type="Timer" parent="."]
 wait_time = 0.045
 one_shot = true
+__meta__ = {
+"_editor_description_": "minimum amount of floor time before next jump"
+}
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
@@ -90,7 +103,10 @@ landing_timer = NodePath("../../LandingTimer")
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource( 7 )
 early_jump_timer = NodePath("../../EarlyJumpTimer")
+late_jump_timer = NodePath("../../LateJumpTimer")
 landing_timer = NodePath("../../LandingTimer")
 
 [node name="Air" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
+
+[connection signal="timeout" from="LateJumpTimer" to="StateMachine/Run" method="_on_LateJumpTimer_timeout"]
