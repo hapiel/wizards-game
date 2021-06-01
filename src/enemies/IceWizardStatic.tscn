@@ -8,6 +8,8 @@ extents = Vector2( 4, 10 )
 
 [node name="IceWizardStatic" type="KinematicBody2D"]
 position = Vector2( 106, 180 )
+collision_layer = 4
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -31,7 +33,7 @@ enabled = true
 collision_mask = 3
 
 [node name="ProjectileTimer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.275
 autostart = true
 
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_ProjectileTimer_timeout"]

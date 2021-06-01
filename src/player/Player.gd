@@ -4,6 +4,7 @@ export var speed = 120
 export var jump_force = 250
 export var jump_limiter = 0.4 # release jump key to go to force * limiter speed.
 export var jump_gravity_reduct = 0.3 # reduction of gravity during jump up.
+export var inertia = 5
 
 var velocity = Vector2.ZERO
 

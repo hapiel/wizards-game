@@ -1,4 +1,3 @@
-# Run.gd
 extends State
 
 onready var glob = $"/root/GlobalSettings"
@@ -27,8 +26,12 @@ func physics_update(delta: float) -> void:
 	# only apply gravity if not in late_jump substate
 	if late_jump_timer.time_left == 0:
 		owner.velocity.y += glob.gravity * delta
-	owner.velocity = owner.move_and_slide_with_snap(owner.velocity, Vector2(0, 10), Vector2.UP, true)
-
+	owner.velocity = owner.move_and_slide_with_snap(owner.velocity, Vector2(0, 10), Vector2.UP, true, 4,  0.785398, false)
+	for index in owner.get_slide_count():
+		var collision = owner.get_slide_collision(index)
+		if collision.collider.is_in_group("object_bodies"):
+			collision.collider.apply_central_impulse(-collision.normal * owner.inertia)
+		
 
 	if early_jump_timer.time_left > 0 && landing_timer.time_left == 0:
 		early_jump_timer.stop()

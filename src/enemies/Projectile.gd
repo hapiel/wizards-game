@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 export var direction = Vector2.RIGHT
 export var speed = 400
@@ -12,10 +12,10 @@ func init(dir = direction, spd = speed):
 
 # move
 func _process(delta):
-	position = position + velocity * delta
-	pass
+	if move_and_collide(velocity * delta) != null:
+		# on hit, destroy
+		queue_free()
 
-# on hit, destroy
-func _on_Projectile_body_entered(body):
-	queue_free()
+
+
 

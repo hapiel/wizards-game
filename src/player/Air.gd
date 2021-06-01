@@ -22,12 +22,13 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("move_jump") and owner.velocity.y <  -owner.jump_force * owner.jump_limiter:
 		owner.velocity.y =  -owner.jump_force * owner.jump_limiter
 	
-	if owner.velocity.y > 150:
-		owner.velocity.y += glob.gravity * delta * 1.4
+	# increas fall speed after a while, tip from Celeste makers
+	if owner.velocity.y > glob.grav_incr_treshold:
+		owner.velocity.y += glob.gravity * delta * glob.grav_incr_amount
 	else:
 		owner.velocity.y += glob.gravity * delta 
 	
-	owner.velocity = owner.move_and_slide(owner.velocity, Vector2.UP)
+	owner.velocity = owner.move_and_slide(owner.velocity, Vector2.UP, true, 4, 0.785398, false)
 
 	# Landing.
 	if owner.is_on_floor():

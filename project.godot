@@ -129,7 +129,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Wizards"
-run/main_scene="res://src/levels/TestWorld01.tscn"
+run/main_scene="res://src/levels/IceWaterfall.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -157,6 +157,29 @@ singletons=[ "res://git_api.gdnlib" ]
 
 action=false
 input=false
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 
@@ -201,12 +224,17 @@ move_down={
 
 [layer_names]
 
-2d_physics/layer_1="player"
-2d_physics/layer_2="floor"
+2d_physics/layer_1="floor"
+2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="enemy_collider (temp?)"
 2d_physics/layer_5="spell"
 2d_physics/layer_6="enemy_top (temp?)"
+2d_physics/layer_7="object"
+
+[physics]
+
+2d/default_gravity=700
 
 [rendering]
 
