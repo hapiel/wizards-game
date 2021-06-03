@@ -33,7 +33,7 @@ enabled = true
 collision_mask = 3
 
 [node name="ProjectileTimer" type="Timer" parent="."]
-wait_time = 0.275
+wait_time = 0.647
 autostart = true
 
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_ProjectileTimer_timeout"]

@@ -5,6 +5,8 @@ export var speed = 400
 
 var velocity = Vector2.ZERO
 
+const IceCube = preload("res://src/object/IceCube.tscn")
+
 # set settings
 func init(dir = direction, spd = speed):
 	velocity = dir.normalized() * spd
@@ -12,8 +14,16 @@ func init(dir = direction, spd = speed):
 
 # move
 func _process(delta):
-	if move_and_collide(velocity * delta) != null:
-		# on hit, destroy
+	var collision = move_and_collide(velocity * delta)
+	if collision != null:
+		if collision.collider.get_groups().has("waterfall"):
+			var ice_cube = IceCube.instance()
+			ice_cube.position = position
+			ice_cube.apply_central_impulse(collision.get_travel() + collision.get_remainder() * 50)
+			print(collision.get_travel())
+			print(collision.get_remainder())
+			get_tree().current_scene.add_child(ice_cube)
+		
 		queue_free()
 
 
