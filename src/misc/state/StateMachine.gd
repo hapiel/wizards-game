@@ -15,7 +15,6 @@ export var initial_state := NodePath()
 # The current active state. At the start of the game, we get the `initial_state`.
 onready var state: State = get_node(initial_state)
 
-
 func _ready() -> void:
 	yield(owner, "ready")
 	# The state machine assigns itself to the State objects' state_machine property.

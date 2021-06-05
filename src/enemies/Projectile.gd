@@ -20,8 +20,6 @@ func _process(delta):
 			var ice_cube = IceCube.instance()
 			ice_cube.position = position
 			ice_cube.apply_central_impulse(collision.get_travel() + collision.get_remainder() * 50)
-			print(collision.get_travel())
-			print(collision.get_remainder())
 			get_tree().current_scene.add_child(ice_cube)
 		
 		queue_free()
