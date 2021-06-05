@@ -102,7 +102,7 @@ noise = SubResource( 4 )
 [sub_resource type="ShaderMaterial" id=6]
 shader = SubResource( 1 )
 shader_param/scale = Vector2( 1, 1 )
-shader_param/zoom = 1.88775
+shader_param/zoom = 1.41421
 shader_param/gap_stretch = Vector2( 0.7, 0.05 )
 shader_param/refraction_stretch = Vector2( 9, 0.8 )
 shader_param/refraction_strength = 0.021
@@ -143,6 +143,7 @@ __meta__ = {
 }
 
 [node name="Waterfall" type="Sprite" parent="Area2D"]
+visible = false
 material = SubResource( 6 )
 position = Vector2( 2, 0.188236 )
 texture = ExtResource( 5 )
