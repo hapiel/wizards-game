@@ -3,7 +3,7 @@ extends KinematicBody2D
 
 export var max_attack_distance = 200
 
-const Projectile = preload("res://src/enemies/Projectile.tscn")
+const Projectile = preload("res://src/enemies/IceProjectile.tscn")
 
 var facing = 1
 export var field_of_view_angle = PI/2
