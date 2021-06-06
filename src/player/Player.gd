@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "res://src/misc/flipping/FlippableKinematic2D.gd"
 
 export var speed = 120
 export var jump_force = 250
@@ -23,7 +23,8 @@ func get_input_direction():
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	if x_input != 0:
 		# true when -1 when left.
-		animated_sprite.flip_h = x_input < 0
+		set_flip_h(x_input < 0)
+#		animated_sprite.flip_h = x_input < 0
 	return x_input
 	
 	

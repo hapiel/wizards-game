@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ice.png-fdf42c3088db69aa47ef94c75c51de7f.stex"
+path="res://.import/wizard.png-0b2f8fef523e5f846f64a46afdb256d3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/ice.png"
-dest_files=[ "res://.import/ice.png-fdf42c3088db69aa47ef94c75c51de7f.stex" ]
+source_file="res://assets/graphics/placeholders/wizard.png"
+dest_files=[ "res://.import/wizard.png-0b2f8fef523e5f846f64a46afdb256d3.stex" ]
 
 [params]
 

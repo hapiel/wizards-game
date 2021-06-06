@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spell.png-72ee94e1c03d7780e8c01cd91ab62fdc.stex"
+path="res://.import/ice.png-ebdabf5091060864e38f928657fcd603.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/spell.png"
-dest_files=[ "res://.import/spell.png-72ee94e1c03d7780e8c01cd91ab62fdc.stex" ]
+source_file="res://assets/graphics/placeholders/ice.png"
+dest_files=[ "res://.import/ice.png-ebdabf5091060864e38f928657fcd603.stex" ]
 
 [params]
 

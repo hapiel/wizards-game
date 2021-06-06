@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wizard.png-5d2ff8c56837463aa7e97a2e24861f90.stex"
+path="res://.import/wistrich_sheet.png-1f882fe923dbb7e531fa84ff6cc2b6dc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/wizard.png"
-dest_files=[ "res://.import/wizard.png-5d2ff8c56837463aa7e97a2e24861f90.stex" ]
+source_file="res://assets/graphics/wistrich_sheet.png"
+dest_files=[ "res://.import/wistrich_sheet.png-1f882fe923dbb7e531fa84ff6cc2b6dc.stex" ]
 
 [params]
 
