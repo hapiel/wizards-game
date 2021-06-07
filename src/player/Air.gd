@@ -4,7 +4,7 @@ onready var glob = $"/root/GlobalSettings"
 
 # If we get a message asking us to jump, we jump.
 func enter(_msg := {}) -> void:
-	owner.animated_sprite.play("jump")
+	owner.animation_player.play("air_up")
 	if _msg.has("do_jump"):
 		owner.velocity.y = -owner.jump_force
 

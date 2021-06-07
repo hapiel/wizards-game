@@ -7,12 +7,12 @@ export(NodePath) onready var late_jump_timer = get_node(late_jump_timer)
 export(NodePath) onready var landing_timer = get_node(landing_timer)
 
 func enter(_msg := {}):
-	owner.animated_sprite.play("run")
+	owner.animation_player.play("walk")
 	
-	# show landing sprite
+#	# show landing sprite
 	if _msg.has("landing"):
 		landing_timer.start()
-		owner.animated_sprite.set_frame(1)
+
 
 func physics_update(delta: float) -> void:
 

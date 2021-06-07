@@ -10,7 +10,7 @@ var velocity = Vector2.ZERO
 
 var wasOnFloor = false
 
-onready var animated_sprite = $AnimatedSprite
+onready var animation_player = $AnimationPlayer
 onready var early_jump_timer = $EarlyJumpTimer
 
 func _process(delta):
@@ -24,7 +24,6 @@ func get_input_direction():
 	if x_input != 0:
 		# true when -1 when left.
 		set_flip_h(x_input < 0)
-#		animated_sprite.flip_h = x_input < 0
 	return x_input
 	
 	

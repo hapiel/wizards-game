@@ -7,7 +7,7 @@ export(NodePath) onready var landing_timer = get_node(landing_timer)
 func enter(_msg := {}) -> void:
 	# We must declare all the properties we access through `owner` in the `Player.gd` script.
 	owner.velocity = Vector2.ZERO
-	owner.animated_sprite.play("idle")
+	owner.animation_player.play("idle")
 	if _msg.has("landing"):
 		landing_timer.start()
 
