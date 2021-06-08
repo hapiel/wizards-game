@@ -12,11 +12,16 @@ func enter(_msg := {}) -> void:
 		landing_timer.start()
 
 var test = 0
-func update(delta: float) -> void:
+func physics_update(delta: float) -> void:
 	
 	if not owner.is_on_floor():
 		state_machine.transition_to("Air")
 		return
+	else:
+		# move with moving blocks
+		if owner.get_floor_velocity() != Vector2.ZERO:
+			owner.velocity = owner.move_and_slide_with_snap(
+				owner.get_floor_velocity() * delta, Vector2(0, 10), Vector2.UP, true, 4,  0.785398, false)
 
 	if early_jump_timer.time_left > 0 && landing_timer.time_left == 0:
 		early_jump_timer.stop()

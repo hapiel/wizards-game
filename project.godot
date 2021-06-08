@@ -153,11 +153,6 @@ enabled=PoolStringArray( "res://addons/Godoxel/plugin.cfg" )
 
 singletons=[ "res://git_api.gdnlib" ]
 
-[global]
-
-action=false
-input=false
-
 [importer_defaults]
 
 texture={
@@ -258,4 +253,5 @@ reload={
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
