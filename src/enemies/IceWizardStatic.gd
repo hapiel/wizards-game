@@ -14,6 +14,8 @@ onready var player_collision = player.get_node("CollisionShape2D")
 
 onready var spawn_point = $ProjectileSpawnPoint
 onready var ray_cast = $ProjectileSpawnPoint/RayCast2D
+onready var state_machine = $WizardStateMachine
+onready var projectile_timer = $ProjectileTimer
 
 #
 #func _process(delta):
@@ -27,9 +29,26 @@ func ice_spell(direction):
 	projectile.init(direction)
 	projectile.position = position + spawn_point.position
 	get_tree().current_scene.add_child(projectile)
-	
 
-func _on_ProjectileTimer_timeout():
+
+func _on_WizardStateMachine_state_process(state):
+	if state == state_machine.State_enum.IDLE:
+		
+		if _player_in_line_of_sight():
+			projectile_timer.start()
+			state_machine.transition_to(state_machine.State_enum.ATTACKING)
+	
+	elif state == state_machine.State_enum.ATTACKING:
+		if not _player_in_line_of_sight():
+			projectile_timer.stop()
+			state_machine.transition_to(state_machine.State_enum.IDLE)
+		elif projectile_timer.time_left <= 0:
+			ice_spell(player.position - position - spawn_point.position + player_collision.position)
+			projectile_timer.start()
+			
+
+
+func _player_in_line_of_sight():
 	var player_pos = player.position - position - spawn_point.position + player_collision.position
 	
 	if player_pos.length() < max_attack_distance:
@@ -40,6 +59,6 @@ func _on_ProjectileTimer_timeout():
 			ray_cast.force_raycast_update()
 			if ray_cast.is_colliding():
 				if ray_cast.get_collider() == player:
-					# line for easy debugging
-					# $Line2D.points = PoolVector2Array([Vector2.ZERO, player_pos])
-					ice_spell(player_pos)
+					return true
+	return false
+

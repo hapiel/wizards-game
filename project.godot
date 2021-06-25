@@ -103,6 +103,11 @@ _global_script_classes=[ {
 "class": "StateMachine",
 "language": "GDScript",
 "path": "res://src/misc/state/StateMachine.gd"
+}, {
+"base": "Node",
+"class": "WizardStateMachine",
+"language": "GDScript",
+"path": "res://src/enemies/WizardStateMachine.gd"
 } ]
 _global_script_class_icons={
 "BrushPrefabs": "",
@@ -123,7 +128,8 @@ _global_script_class_icons={
 "GEUtils": "",
 "GitAPI": "",
 "State": "",
-"StateMachine": ""
+"StateMachine": "",
+"WizardStateMachine": ""
 }
 
 [application]
