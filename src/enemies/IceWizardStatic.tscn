@@ -15,7 +15,8 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 3
+vframes = 5
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -40,5 +41,10 @@ one_shot = true
 [node name="WizardStateMachine" type="Node" parent="."]
 script = ExtResource( 3 )
 
+[node name="FrozenTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_ProjectileTimer_timeout"]
 [connection signal="state_process" from="WizardStateMachine" to="." method="_on_WizardStateMachine_state_process"]
+[connection signal="transitioned" from="WizardStateMachine" to="." method="_on_WizardStateMachine_transitioned"]

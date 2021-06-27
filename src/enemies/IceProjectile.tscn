@@ -9,7 +9,7 @@ radius = 2.87637
 [node name="IceProjectile" type="Area2D"]
 position = Vector2( -0.140598, -0.0105972 )
 collision_layer = 16
-collision_mask = 3
+collision_mask = 7
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

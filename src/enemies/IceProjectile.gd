@@ -23,7 +23,6 @@ func _process(delta):
 	if $RayCast2D.is_colliding( ):
 		var col_point = $RayCast2D.get_collision_point ( )
 		if abs((col_point - position).length()) < (velocity*delta).length():
-			print("Interrupting due to collisions")
 			position = col_point
 		else:
 			position += velocity*delta
@@ -34,9 +33,13 @@ func _process(delta):
 func _on_IceProjectile_body_entered(body):
 	if body.is_in_group("player"):
 		print("Player hit")
-	if body.get_groups().has("waterfall"):
+	elif body.get_groups().has("waterfall"):
 		var ice_cube = IceCube.instance()
 		ice_cube.position = position
 		ice_cube.apply_central_impulse(velocity * 0.2)
 		get_tree().current_scene.add_child(ice_cube)
+	elif body.get_node("WizardStateMachine"):
+		var state_machine = body.get_node("WizardStateMachine")
+		state_machine.transition_to(state_machine.State_enum.FROZEN)
+		print("Wizard hit!")
 	queue_free()

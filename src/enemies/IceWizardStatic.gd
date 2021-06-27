@@ -16,6 +16,8 @@ onready var spawn_point = $ProjectileSpawnPoint
 onready var ray_cast = $ProjectileSpawnPoint/RayCast2D
 onready var state_machine = $WizardStateMachine
 onready var projectile_timer = $ProjectileTimer
+onready var sprite = $Sprite
+onready var frozen_timer = $FrozenTimer
 
 #
 #func _process(delta):
@@ -35,16 +37,17 @@ func _on_WizardStateMachine_state_process(state):
 	if state == state_machine.State_enum.IDLE:
 		
 		if _player_in_line_of_sight():
-			projectile_timer.start()
 			state_machine.transition_to(state_machine.State_enum.ATTACKING)
 	
 	elif state == state_machine.State_enum.ATTACKING:
 		if not _player_in_line_of_sight():
-			projectile_timer.stop()
 			state_machine.transition_to(state_machine.State_enum.IDLE)
 		elif projectile_timer.time_left <= 0:
 			ice_spell(player.position - position - spawn_point.position + player_collision.position)
 			projectile_timer.start()
+	elif state == state_machine.State_enum.FROZEN:
+		if frozen_timer.time_left <= 0:
+			state_machine.transition_to(state_machine.State_enum.IDLE)
 			
 
 
@@ -62,3 +65,17 @@ func _player_in_line_of_sight():
 					return true
 	return false
 
+
+
+func _on_WizardStateMachine_transitioned(state):
+	if state == state_machine.State_enum.IDLE:
+		projectile_timer.stop()
+		sprite.frame = 0
+	elif state == state_machine.State_enum.ATTACKING:
+		projectile_timer.start()
+		sprite.frame = 4
+	elif state == state_machine.State_enum.FROZEN:
+		projectile_timer.stop()
+		sprite.frame = 3
+		frozen_timer.start()
+		
