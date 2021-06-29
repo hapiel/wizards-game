@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/player/PlayerCamera.gd" type="Script" id=3]
@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "air_top"
-length = 0.16
+length = 2.0
 step = 0.08
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -98,6 +98,23 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=6]
+length = 0.18
+step = 0.06
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.06, 0.12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 35, 36, 37 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "landing_small"
 length = 0.12
 step = 0.06
 tracks/0/type = "value"
@@ -110,10 +127,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.06 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 35, 36 ]
+"values": [ 36, 37 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 length = 0.2
 loop = true
 step = 0.05
@@ -130,8 +147,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "trot"
+[sub_resource type="Animation" id=9]
 length = 0.24
 loop = true
 step = 0.06
@@ -148,7 +164,7 @@ tracks/0/keys = {
 "values": [ 48, 49, 50, 51 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.18
 step = 0.06
 tracks/0/type = "value"
@@ -176,7 +192,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.64
 loop = true
 step = 0.08
@@ -193,10 +209,10 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="RectangleShape2D" id=11]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 5, 9 )
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 4.0
 height = 8.0
 
@@ -206,13 +222,14 @@ height = 8.0
 collision_layer = 2
 collision_mask = 65
 script = ExtResource( 2 )
+speed = 180
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 4, -16 )
 texture = ExtResource( 8 )
 hframes = 8
 vframes = 7
-frame = 24
+frame = 37
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/air_down = SubResource( 1 )
@@ -221,10 +238,11 @@ anims/air_up = SubResource( 3 )
 anims/duck = SubResource( 4 )
 anims/idle = SubResource( 5 )
 anims/landing = SubResource( 6 )
-anims/sprint = SubResource( 7 )
-anims/trot = SubResource( 8 )
-anims/turn = SubResource( 9 )
-anims/walk = SubResource( 10 )
+anims/landing_small = SubResource( 7 )
+anims/sprint = SubResource( 8 )
+anims/trot = SubResource( 9 )
+anims/turn = SubResource( 10 )
+anims/walk = SubResource( 11 )
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
@@ -242,12 +260,12 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, -9 )
-shape = SubResource( 11 )
+shape = SubResource( 12 )
 
 [node name="CollionShapeHead" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 6, -14 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 disabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

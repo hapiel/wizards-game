@@ -2,6 +2,8 @@ extends State
 
 onready var glob = $"/root/GlobalSettings"
 
+var prevVelocity
+
 # If we get a message asking us to jump, we jump.
 func enter(_msg := {}) -> void:
 	owner.animation_player.play("air_up")
@@ -10,6 +12,8 @@ func enter(_msg := {}) -> void:
 
 
 func physics_update(delta: float) -> void:
+	
+	prevVelocity = owner.velocity
 	
 	# Horizontal movement.
 	owner.velocity.x = owner.speed * owner.get_input_direction()
@@ -33,6 +37,15 @@ func physics_update(delta: float) -> void:
 	# Landing.
 	if owner.is_on_floor():
 		if is_equal_approx(owner.velocity.x, 0.0):
-			state_machine.transition_to("Idle", {landing = true})
+			state_machine.transition_to("Idle", {landing = true, velocity = prevVelocity})
 		else:
 			state_machine.transition_to("Run", {landing = true})
+	else:
+		#handle animations
+		if owner.velocity.y > 250:
+			owner.animation_player.play("air_down")
+		elif owner.velocity.y < -100:
+			owner.animation_player.play("air_up")
+		else:	
+			if !(owner.animation_player.get_current_animation() == "air_top"):
+				owner.animation_player.play("air_top")

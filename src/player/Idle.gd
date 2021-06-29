@@ -8,8 +8,16 @@ func enter(_msg := {}) -> void:
 	# We must declare all the properties we access through `owner` in the `Player.gd` script.
 	owner.velocity = Vector2.ZERO
 	owner.animation_player.play("idle")
+	owner.animation_player.animation_set_next("landing_small", "idle")
 	if _msg.has("landing"):
 		landing_timer.start()
+		if _msg.velocity.y > 500:
+			owner.animation_player.play("landing")
+			owner.animation_player.animation_set_next("landing", "idle")
+		else:
+			owner.animation_player.play("landing_small")
+			owner.animation_player.animation_set_next("landing_small", "idle")
+
 
 var test = 0
 func physics_update(delta: float) -> void:
