@@ -1,8 +1,25 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/graphics/placeholders/wizard.png" type="Texture" id=1]
 [ext_resource path="res://src/enemies/IceWizardStatic.gd" type="Script" id=2]
 [ext_resource path="res://src/enemies/WizardStateMachine.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=2]
+resource_name = "ice_cast"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 10 )
@@ -14,13 +31,16 @@ collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 4, -5 )
 texture = ExtResource( 1 )
-vframes = 5
+vframes = 6
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ice_cast = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2 )
+position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
