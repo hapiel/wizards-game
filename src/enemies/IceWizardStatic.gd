@@ -19,12 +19,6 @@ onready var projectile_timer = $ProjectileTimer
 onready var sprite = $Sprite
 onready var frozen_timer = $FrozenTimer
 
-#
-#func _process(delta):
-
-	# this doesn't need to be done every step, could put it on a timer 0.2 seconds? 
-	# for performance gain?
-	
 
 func ice_spell(direction):
 	var projectile = Projectile.instance()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://src/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://src/player/PlayerCamera.gd" type="Script" id=3]
@@ -23,6 +23,21 @@ tracks/0/keys = {
 "values": [ 33 ]
 }
 
+[sub_resource type="Animation" id=14]
+resource_name = "air_down_front"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 28 ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "air_top"
 length = 2.0
@@ -40,6 +55,23 @@ tracks/0/keys = {
 "values": [ 33, 34 ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "air_top_front"
+length = 2.0
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 28, 29 ]
+}
+
 [sub_resource type="Animation" id=3]
 resource_name = "air_up"
 tracks/0/type = "value"
@@ -53,6 +85,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 32 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "air_up_front"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 27 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -210,7 +257,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=12]
-extents = Vector2( 5, 9 )
+extents = Vector2( 4, 9 )
 
 [sub_resource type="CapsuleShape2D" id=13]
 radius = 4.0
@@ -222,19 +269,22 @@ height = 8.0
 collision_layer = 2
 collision_mask = 65
 script = ExtResource( 2 )
-speed = 180
+max_speed = 300
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 4, -16 )
 texture = ExtResource( 8 )
 hframes = 8
 vframes = 7
-frame = 37
+frame = 29
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/air_down = SubResource( 1 )
+anims/air_down_front = SubResource( 14 )
 anims/air_top = SubResource( 2 )
+anims/air_top_front = SubResource( 15 )
 anims/air_up = SubResource( 3 )
+anims/air_up_front = SubResource( 16 )
 anims/duck = SubResource( 4 )
 anims/idle = SubResource( 5 )
 anims/landing = SubResource( 6 )

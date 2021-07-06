@@ -6,7 +6,12 @@ var prevVelocity
 
 # If we get a message asking us to jump, we jump.
 func enter(_msg := {}) -> void:
-	owner.animation_player.play("air_up")
+	
+	if abs(owner.velocity.x) < 240:
+		owner.animation_player.play("air_up")
+	else:
+		owner.animation_player.play("air_up_front")
+		
 	if _msg.has("do_jump"):
 		owner.velocity.y = -owner.jump_force
 
@@ -16,7 +21,7 @@ func physics_update(delta: float) -> void:
 	prevVelocity = owner.velocity
 	
 	# Horizontal movement.
-	owner.velocity.x = owner.speed * owner.get_input_direction()
+	owner.update_velocity_x(delta)
 
 	# Vertical movement.
 	# go up longer when holding jump
@@ -42,10 +47,19 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("Run", {landing = true})
 	else:
 		#handle animations
-		if owner.velocity.y > 250:
-			owner.animation_player.play("air_down")
-		elif owner.velocity.y < -100:
-			owner.animation_player.play("air_up")
-		else:	
-			if !(owner.animation_player.get_current_animation() == "air_top"):
-				owner.animation_player.play("air_top")
+		if abs(owner.velocity.x) < 240:
+			if owner.velocity.y > 250:
+				owner.animation_player.play("air_down")
+			elif owner.velocity.y < -100:
+				owner.animation_player.play("air_up")
+			else:	
+				if !(owner.animation_player.get_current_animation() == "air_top"):
+					owner.animation_player.play("air_top")
+		else:
+			if owner.velocity.y > 250:
+				owner.animation_player.play("air_down_front")
+			elif owner.velocity.y < -100:
+				owner.animation_player.play("air_up_front")
+			else:	
+				if !(owner.animation_player.get_current_animation() == "air_top_front"):
+					owner.animation_player.play("air_top_front")

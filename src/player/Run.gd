@@ -21,13 +21,22 @@ func physics_update(delta: float) -> void:
 		if late_jump_timer.time_left == 0:
 			late_jump_timer.start()
 	
-	var input_direction_x = owner.get_input_direction()
-	owner.velocity.x = owner.speed * input_direction_x
+	owner.update_velocity_x(delta)
+	
+	if abs(owner.velocity.x) < 120:
+		owner.animation_player.play("walk")
+	elif abs(owner.velocity.x) < 290:
+		owner.animation_player.play("trot")
+	else:
+		owner.animation_player.play("sprint")
+	
 	# only apply gravity if not in late_jump substate
-	if late_jump_timer.time_left == 0:
+	# and not on floor so you can climb slopes without issue
+	if late_jump_timer.time_left == 0 && not owner.is_on_floor():
 		owner.velocity.y += glob.gravity * delta
 	owner.velocity = owner.move_and_slide_with_snap(owner.velocity, Vector2(0, 10), Vector2.UP, true, 4,  0.785398, false)
 	for index in owner.get_slide_count():
+		#push ice blocks
 		var collision = owner.get_slide_collision(index)
 		if collision.collider.is_in_group("object_bodies"):
 			collision.collider.apply_central_impulse(-collision.normal * owner.inertia)
@@ -37,7 +46,7 @@ func physics_update(delta: float) -> void:
 		early_jump_timer.stop()
 		state_machine.transition_to("Air", {do_jump = true})
 		
-	elif is_equal_approx(input_direction_x, 0.0):
+	elif is_equal_approx(owner.get_input_direction(), 0.0):
 		state_machine.transition_to("Idle")
 
 

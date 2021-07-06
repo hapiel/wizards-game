@@ -1,10 +1,12 @@
 extends "res://src/misc/flipping/FlippableKinematic2D.gd"
 
-export var speed = 120
+export var max_speed = 180
+export var acceleration = 300
+export var slowdown_rate = 0.08
 export var jump_force = 250
 export var jump_limiter = 0.4 # release jump key to go to force * limiter speed.
 export var jump_gravity_reduct = 0.3 # reduction of gravity during jump up.
-export var inertia = 5
+export var inertia = 40 #originally 5
 
 var velocity = Vector2.ZERO
 
@@ -27,3 +29,30 @@ func get_input_direction():
 	return x_input
 	
 	
+func update_velocity_x(dt):
+	# single speed
+#	velocity.x = max_speed * get_input_direction()
+
+	# accelerating:
+	if get_input_direction() != 0:
+		#moving the direction the player wants to go
+		if sign(velocity.x) == get_input_direction():
+			velocity.x += acceleration * get_input_direction() * dt
+		else:
+			#brake faster
+			velocity.x = lerp(velocity.x, 0, slowdown_rate)
+			if abs(velocity.x) < 30:
+				velocity.x = 0 
+			velocity.x += acceleration * get_input_direction() * dt
+		
+		if velocity.x > max_speed:
+			velocity.x = max_speed
+		elif velocity.x < -max_speed:
+			velocity.x = -max_speed
+	else:
+		velocity.x = lerp(velocity.x, 0, slowdown_rate)
+		if abs(velocity.x) < 30:
+			velocity.x = 0 
+		
+		
+	pass
