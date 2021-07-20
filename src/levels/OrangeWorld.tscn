@@ -4,7 +4,7 @@
 [ext_resource path="res://src/misc/TileMap_orange.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/object/IceCube.tscn" type="PackedScene" id=3]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 
 [node name="IceCube" parent="." instance=ExtResource( 3 )]
 position = Vector2( 76.2542, 201.192 )

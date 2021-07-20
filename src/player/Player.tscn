@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ 33 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=2]
 resource_name = "air_down_front"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -38,8 +38,7 @@ tracks/0/keys = {
 "values": [ 28 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "air_top"
+[sub_resource type="Animation" id=3]
 length = 2.0
 step = 0.08
 tracks/0/type = "value"
@@ -55,7 +54,7 @@ tracks/0/keys = {
 "values": [ 33, 34 ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=4]
 resource_name = "air_top_front"
 length = 2.0
 step = 0.08
@@ -72,8 +71,7 @@ tracks/0/keys = {
 "values": [ 28, 29 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "air_up"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -87,7 +85,7 @@ tracks/0/keys = {
 "values": [ 32 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=6]
 resource_name = "air_up_front"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -102,8 +100,7 @@ tracks/0/keys = {
 "values": [ 27 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "duck"
+[sub_resource type="Animation" id=7]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -118,7 +115,7 @@ tracks/0/keys = {
 "values": [ 40, 41, 42, 43 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -144,7 +141,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 length = 0.18
 step = 0.06
 tracks/0/type = "value"
@@ -160,8 +157,7 @@ tracks/0/keys = {
 "values": [ 35, 36, 37 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "landing_small"
+[sub_resource type="Animation" id=10]
 length = 0.12
 step = 0.06
 tracks/0/type = "value"
@@ -177,7 +173,7 @@ tracks/0/keys = {
 "values": [ 36, 37 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=11]
 length = 0.2
 loop = true
 step = 0.05
@@ -194,7 +190,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=12]
 length = 0.24
 loop = true
 step = 0.06
@@ -211,7 +207,7 @@ tracks/0/keys = {
 "values": [ 48, 49, 50, 51 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=13]
 length = 0.18
 step = 0.06
 tracks/0/type = "value"
@@ -239,7 +235,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=14]
 length = 0.64
 loop = true
 step = 0.08
@@ -256,10 +252,10 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 4, 9 )
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=16]
 radius = 4.0
 height = 8.0
 
@@ -276,23 +272,22 @@ position = Vector2( 4, -16 )
 texture = ExtResource( 8 )
 hframes = 8
 vframes = 7
-frame = 29
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/air_down = SubResource( 1 )
-anims/air_down_front = SubResource( 14 )
-anims/air_top = SubResource( 2 )
-anims/air_top_front = SubResource( 15 )
-anims/air_up = SubResource( 3 )
-anims/air_up_front = SubResource( 16 )
-anims/duck = SubResource( 4 )
-anims/idle = SubResource( 5 )
-anims/landing = SubResource( 6 )
-anims/landing_small = SubResource( 7 )
-anims/sprint = SubResource( 8 )
-anims/trot = SubResource( 9 )
-anims/turn = SubResource( 10 )
-anims/walk = SubResource( 11 )
+anims/air_down_front = SubResource( 2 )
+anims/air_top = SubResource( 3 )
+anims/air_top_front = SubResource( 4 )
+anims/air_up = SubResource( 5 )
+anims/air_up_front = SubResource( 6 )
+anims/duck = SubResource( 7 )
+anims/idle = SubResource( 8 )
+anims/landing = SubResource( 9 )
+anims/landing_small = SubResource( 10 )
+anims/sprint = SubResource( 11 )
+anims/trot = SubResource( 12 )
+anims/turn = SubResource( 13 )
+anims/walk = SubResource( 14 )
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
@@ -310,12 +305,12 @@ script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, -9 )
-shape = SubResource( 12 )
+shape = SubResource( 15 )
 
 [node name="CollionShapeHead" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 6, -14 )
-shape = SubResource( 13 )
+shape = SubResource( 16 )
 disabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -331,7 +326,7 @@ __meta__ = {
 }
 
 [node name="LateJumpTimer" type="Timer" parent="."]
-wait_time = 0.04
+wait_time = 0.08
 one_shot = true
 __meta__ = {
 "_editor_description_": "Amount of time before 'air' state & full gravity kicks in after running off platform edge"

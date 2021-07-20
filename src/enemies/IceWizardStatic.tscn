@@ -4,7 +4,7 @@
 [ext_resource path="res://src/enemies/IceWizardStatic.gd" type="Script" id=2]
 [ext_resource path="res://src/enemies/WizardStateMachine.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "ice_cast"
 length = 0.2
 loop = true
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ 4, 5 ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 4, 10 )
 
 [node name="IceWizardStatic" type="KinematicBody2D"]
@@ -37,11 +37,11 @@ vframes = 6
 frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ice_cast = SubResource( 2 )
+anims/ice_cast = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 2.0
