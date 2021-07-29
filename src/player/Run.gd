@@ -56,7 +56,8 @@ func physics_update(delta: float) -> void:
 		
 	elif is_equal_approx(owner.get_input_direction(), 0.0):
 		state_machine.transition_to("Idle")
-
+	elif Input.is_action_pressed("move_down"):
+		state_machine.transition_to("Duck")
 
 
 func _on_LateJumpTimer_timeout():
