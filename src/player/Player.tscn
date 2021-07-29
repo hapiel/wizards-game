@@ -303,6 +303,16 @@ script = ExtResource( 3 )
 
 [node name="ShiftTween" type="Tween" parent="PlayerCamera"]
 
+[node name="WallJumpRayFront" type="RayCast2D" parent="."]
+position = Vector2( 6, -7 )
+enabled = true
+cast_to = Vector2( 2, 0 )
+
+[node name="WallJumpRayBack" type="RayCast2D" parent="."]
+position = Vector2( -2, -7 )
+enabled = true
+cast_to = Vector2( -5, 0 )
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 2, -9 )
 shape = SubResource( 15 )
