@@ -14,12 +14,15 @@ var wasOnFloor = false
 
 onready var animation_player = $AnimationPlayer
 onready var early_jump_timer = $EarlyJumpTimer
+onready var wall_jump_ray_front = $WallJumpRayFront
+onready var wall_jump_ray_back = $WallJumpRayBack
 
 func _process(delta):
 	if Input.is_action_just_pressed("move_jump"):
 		early_jump_timer.start()
 	if Input.is_action_just_released("move_jump"):
 		early_jump_timer.stop()
+
 	
 func get_input_direction():
 	var x_input = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -27,6 +30,7 @@ func get_input_direction():
 		# true when -1 when left.
 		set_flip_h(x_input < 0)
 	return x_input
+	
 	
 	
 func update_velocity_x(dt):
