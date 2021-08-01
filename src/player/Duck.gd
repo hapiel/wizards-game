@@ -1,6 +1,6 @@
 extends State
 
-onready var ray_cast = $DuckRayCast2D
+onready var ray_cast = get_node("../../DuckRayCast2D")
 
 # Upon entering the state, we set the Player node's velocity to zero.
 func enter(_msg := {}) -> void:
@@ -12,7 +12,7 @@ func enter(_msg := {}) -> void:
 
 func physics_update(delta: float) -> void:
 	
-	# owner.update_velocity_x(delta)
+	owner.update_slide_velocity_x(delta)
 	
 	# only update position if moving, otherwise some glitch happens.
 	if abs(owner.velocity.x) > 1:
@@ -30,8 +30,6 @@ func physics_update(delta: float) -> void:
 				owner.get_floor_velocity() * delta, Vector2(0, 10), Vector2.UP, true, 4,  0.785398, false)	
 
 
-
-	if Input.is_action_just_released("move_down"):
-		print(ray_cast.is_colliding())
+	if not Input.is_action_pressed("move_down"):
 		if not ray_cast.is_colliding():
 			state_machine.transition_to("Idle")
