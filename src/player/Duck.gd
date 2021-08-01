@@ -31,6 +31,5 @@ func physics_update(delta: float) -> void:
 
 
 	if not Input.is_action_pressed("move_down"):
-		print(ray_cast.is_colliding())
 		if not ray_cast.is_colliding():
 			state_machine.transition_to("Idle")

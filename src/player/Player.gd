@@ -89,7 +89,6 @@ func update_slide_velocity_x(dt):
 		elif velocity.x < -max_speed:
 			velocity.x = -max_speed
 	if not movement_updated:
-		print(velocity.y)
 		var modified_slowdown_rate = slide_slowdown_rate
 		if velocity.y > 30:
 			modified_slowdown_rate /= 4
