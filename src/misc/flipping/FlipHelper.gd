@@ -9,6 +9,7 @@ var flip_h = false
 var flip_v = false
 var node = null
 
+var actuall_x_scale = 1
 
 func _init(node):
 	self.node = node
@@ -39,6 +40,21 @@ func set_flip_v(enable):
 
 
 func h_flip_children():
+	var should_flip = false 
+	if flip_h:
+		if actuall_x_scale == 1:
+			should_flip = true
+	else:
+		if actuall_x_scale == -1:
+			should_flip = true
+	if should_flip:
+		node.scale.x *= -1
+		actuall_x_scale *= -1
+		for n in node.get_children():
+			if n is Camera2D:
+				var pos = n.position
+				n.translate(Vector2(-2.0 * pos.x, 0.0))
+	"""
 	for n in node.get_children():
 		if not (n is Node2D) or n is Camera2D:
 			continue
@@ -53,7 +69,7 @@ func h_flip_children():
 			
 		var pos = n.position
 		n.translate(Vector2(-2.0 * pos.x, 0.0))
-
+"""
 
 func v_flip_children():
 	for n in node.get_children():

@@ -28,7 +28,7 @@ func check_facing():
 	var new_facing = sign(owner.velocity.x)
 	if new_facing != 0 && facing != new_facing:
 		facing = new_facing
-		var target_offset = get_viewport_rect().size.x * facing * look_ahead_factor
+		var target_offset = get_viewport_rect().size.x * look_ahead_factor
 		tween.interpolate_property(self, "position:x", position.x, target_offset, shift_duration, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
 
