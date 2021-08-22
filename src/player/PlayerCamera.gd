@@ -12,7 +12,7 @@ var facing = 0
 
 onready var prev_camera_pos = get_camera_position()
 onready var tween = $ShiftTween
-#onready var player = get_parent()
+onready var player = get_tree().get_nodes_in_group("player")[0]
 
 func _ready():
 	# adjust limits based on tilemaps in scene
@@ -25,10 +25,10 @@ func _physics_process(delta):
 	
 
 func check_facing():
-	var new_facing = sign(owner.velocity.x)
+	var new_facing = sign(player.velocity.x)
 	if new_facing != 0 && facing != new_facing:
 		facing = new_facing
-		var target_offset = get_viewport_rect().size.x * look_ahead_factor
+		var target_offset = get_viewport_rect().size.x * facing * look_ahead_factor
 		tween.interpolate_property(self, "position:x", position.x, target_offset, shift_duration, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
 
