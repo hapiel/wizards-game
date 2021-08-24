@@ -50,28 +50,10 @@ func h_flip_children():
 	if should_flip:
 		node.scale.x *= -1
 		actuall_x_scale *= -1
-		for n in node.get_children():
-			if n is Camera2D:
-				var pos = n.position
-				n.translate(Vector2(-2.0 * pos.x, 0.0))
-	"""
-	for n in node.get_children():
-		if not (n is Node2D) or n is Camera2D:
-			continue
-		
-		if n is CollisionShape2D or n is CollisionObject2D:
-			n.rotation = -2.0 * n.rotation
-		else:
-			if flip_h:
-				n.scale = Vector2(-1, 1)
-			else:
-				n.scale = Vector2(1, 1)
-			
-		var pos = n.position
-		n.translate(Vector2(-2.0 * pos.x, 0.0))
-"""
+
 
 func v_flip_children():
+	# TODO: Rewrite in h_flip_children's image
 	for n in node.get_children():
 		if not (n is Node2D):
 			continue
