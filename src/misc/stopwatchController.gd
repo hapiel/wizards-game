@@ -22,14 +22,14 @@ func _process(delta: float):
 func _on_StartDetector_body_entered(body):
 	if body.is_in_group("player"):
 		start_time = OS.get_ticks_msec()
-		print("Go!!!")
+		get_node("../AudioStart").play()
 		remove_child($StartDetector)
 
 
 func _on_EndDetector_body_entered(body):
 	if body.is_in_group("player"):
 		final_time = OS.get_ticks_msec() - start_time
-		print("FINAL TIME " + get_pretty_time())
+		get_node("../AudioStop").play()
 		remove_child($EndDetector)
 
 
