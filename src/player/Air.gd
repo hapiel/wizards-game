@@ -25,7 +25,6 @@ func physics_update(delta: float) -> void:
 	owner.update_velocity_x(delta * 0.8)
 	
 	# walljump
-#	if Input.is_action_just_pressed("move_jump") and check_wall():
 	if owner.early_jump_timer.time_left > 0 and check_wall():
 		owner.early_jump_timer.stop()
 		owner.velocity.y = -owner.jump_force*0.90
@@ -36,12 +35,21 @@ func physics_update(delta: float) -> void:
 			owner.velocity.x = -180 * check_wall()
 			
 		# flip sprite depending on direction
+		# set timers for easier wall jump direction
 		if sign(owner.velocity.x) == 1:
 			owner.set_flip_h(false)
+			owner.just_wall_jumped_left_timer.start()
+			owner.just_wall_jumped_right_timer.stop()
 		elif sign(owner.velocity.x) == -1:
 			owner.set_flip_h(true)
-
+			owner.just_wall_jumped_right_timer.start()
+			owner.just_wall_jumped_right_timer.stop()
+			
+	if owner.just_wall_jumped_left_timer.time_left > 0 and owner.get_input_direction() == 0:
+		owner.velocity.x += owner.acceleration * 1 * delta
 		
+	if owner.just_wall_jumped_right_timer.time_left > 0 and owner.get_input_direction() == 0:
+		owner.velocity.x += owner.acceleration * -1 * delta
 
 
 	# Vertical movement.
