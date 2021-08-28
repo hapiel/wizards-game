@@ -10,7 +10,6 @@ extents = Vector2( 11.9847, 11.9903 )
 extents = Vector2( 11.8748, 2 )
 
 [node name="BouncyPad" type="StaticBody2D"]
-position = Vector2( 1385, 336 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
