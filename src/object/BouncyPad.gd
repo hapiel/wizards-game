@@ -22,4 +22,4 @@ func _on_TopChecker_body_entered(body):
 		body.get_node("StateMachine").transition_to("Air")
 		body.velocity.y -= jump_boost
 		$AnimationPlayer.play("Chap_Bounce")
-		$Sound.play()
+		$Sound.play()  

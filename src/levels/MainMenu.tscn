@@ -70,7 +70,7 @@ margin_right = 200.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 custom_fonts/normal_font = SubResource( 2 )
-text = "Controlls:
+text = "Controls:
 press[<][>] / [A][D] to move
 use [^] / [W] to jump or walljump
 hold [\\/] / [S] to duck and slide
