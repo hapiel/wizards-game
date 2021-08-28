@@ -679,6 +679,14 @@ __meta__ = {
 "_editor_description_": "minimum amount of floor time before next jump"
 }
 
+[node name="JustWallJumpedLeftTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="JustWallJumpedRightTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 4 )
 initial_state = NodePath("Idle")

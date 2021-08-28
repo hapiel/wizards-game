@@ -13,3 +13,5 @@ tile_data = PoolIntArray( 65534, 0, 196613, 65535, 0, 262145, 0, 0, 262145, 1, 0
 position = Vector2( 47.8644, 215.258 )
 
 [node name="PurpleParallaxBackground" parent="." instance=ExtResource( 3 )]
+
+[editable path="PlayerWithAccessories"]
