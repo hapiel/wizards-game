@@ -7,7 +7,7 @@
 [node name="PurpleParallaxBackground" type="ParallaxBackground"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 0, -0.01 )
+motion_scale = Vector2( 0.025, -0.01 )
 
 [node name="purple_bg03" type="Sprite" parent="ParallaxLayer"]
 texture = ExtResource( 2 )
