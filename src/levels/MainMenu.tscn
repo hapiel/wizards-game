@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/resource/placeholderfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/misc/mainMenuButtons.gd" type="Script" id=2]
@@ -10,10 +10,6 @@ font_path = "res://assets/graphics/PrinterFace.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
-outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
 outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 1 )
 
@@ -82,10 +78,17 @@ margin_bottom = 68.0
 custom_fonts/font = ExtResource( 1 )
 text = "Bouncy Castle"
 
-[node name="Button_exit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Button_jump_challenge2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 72.0
 margin_right = 114.0
 margin_bottom = 104.0
+custom_fonts/font = ExtResource( 1 )
+text = "Spiral Run"
+
+[node name="Button_exit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 108.0
+margin_right = 114.0
+margin_bottom = 140.0
 custom_fonts/font = ExtResource( 1 )
 text = "Exit"
 __meta__ = {
@@ -114,4 +117,5 @@ scroll_active = false
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_time_trial" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Node" method="_on_Button_time_trial_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_jump_challenge" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Node" method="_on_Button_jump_challenge_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_jump_challenge2" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Node" method="_on_Button_jump_challenge2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button_exit" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Node" method="_on_Button_exit_pressed"]

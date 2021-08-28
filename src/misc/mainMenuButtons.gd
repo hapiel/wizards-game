@@ -21,3 +21,7 @@ func _on_Button_jump_challenge_pressed():
 
 func _on_Button_exit_pressed():
 	get_tree().quit()
+
+
+func _on_Button_jump_challenge2_pressed():
+	get_tree().change_scene("res://src/levels/timeTrial.tscn")
