@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/resource/tilemap_indoor.tres" type="TileSet" id=1]
+[ext_resource path="res://src/misc/TileMap12x12.tscn" type="PackedScene" id=2]
+
+[node name="TileMap" instance=ExtResource( 2 )]
+tile_set = ExtResource( 1 )
+collision_layer = 0
