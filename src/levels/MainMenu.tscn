@@ -1,4 +1,7 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/resource/placeholderfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/misc/mainMenuButtons.gd" type="Script" id=2]
 
 [node name="MarginContainer" type="MarginContainer"]
 anchor_right = 1.0
@@ -19,5 +22,41 @@ margin_top = 20.0
 margin_right = 460.0
 margin_bottom = 250.0
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 130.0
 margin_bottom = 230.0
+
+[node name="Node" type="Node" parent="HBoxContainer/VBoxContainer"]
+script = ExtResource( 2 )
+
+[node name="Button_time_trial" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_right = 130.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+text = "Time Trial"
+
+[node name="Button_jump_challenge" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 36.0
+margin_right = 130.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 1 )
+text = "Jump chanllenge"
+
+[node name="Button_exit" type="Button" parent="HBoxContainer/VBoxContainer"]
+margin_top = 72.0
+margin_right = 130.0
+margin_bottom = 104.0
+custom_fonts/font = ExtResource( 1 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 134.0
+margin_right = 134.0
+margin_bottom = 230.0
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button_time_trial" to="HBoxContainer/VBoxContainer/Node" method="_on_Button_time_trial_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button_jump_challenge" to="HBoxContainer/VBoxContainer/Node" method="_on_Button_jump_challenge_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/Button_exit" to="HBoxContainer/VBoxContainer/Node" method="_on_Button_exit_pressed"]
