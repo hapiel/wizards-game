@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/player/PlayerWithAccessories.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/misc/TileMap_orange.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/environment/PurpleParallaxBackground.tscn" type="PackedScene" id=3]
 
 [node name="Node2D3" type="Node2D"]
 
@@ -10,3 +11,5 @@ tile_data = PoolIntArray( 65534, 0, 196613, 65535, 0, 262145, 0, 0, 262145, 1, 0
 
 [node name="PlayerWithAccessories" parent="." instance=ExtResource( 1 )]
 position = Vector2( 47.8644, 215.258 )
+
+[node name="PurpleParallaxBackground" parent="." instance=ExtResource( 3 )]
