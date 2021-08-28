@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/resource/placeholderfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/misc/stopwatchController.gd" type="Script" id=2]
+[ext_resource path="res://src/misc/StopwatchDisplay.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 10, 28.3053 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 8.65765, 21.0857 )
+
+[node name="TimeTrial" type="Node2D"]
+
+[node name="stopwatchController" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="StartDetector" type="Area2D" parent="stopwatchController"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stopwatchController/StartDetector"]
+position = Vector2( 270.712, 239.883 )
+shape = SubResource( 9 )
+
+[node name="EndDetector" type="Area2D" parent="stopwatchController"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stopwatchController/EndDetector"]
+position = Vector2( 841.771, -59.4779 )
+shape = SubResource( 10 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StopwatchDisplay" type="RichTextLabel" parent="CanvasLayer"]
+anchor_right = 0.333
+margin_left = 3.0
+margin_right = -8.84
+margin_bottom = 27.0
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 0, 0.94902, 1, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="timer_update" from="stopwatchController" to="CanvasLayer/StopwatchDisplay" method="_on_stopwatchController_timer_update"]
+[connection signal="body_entered" from="stopwatchController/StartDetector" to="stopwatchController" method="_on_StartDetector_body_entered"]
+[connection signal="body_entered" from="stopwatchController/EndDetector" to="stopwatchController" method="_on_EndDetector_body_entered"]

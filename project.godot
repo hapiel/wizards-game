@@ -135,7 +135,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Wizards"
-run/main_scene="res://src/levels/timeTrial.tscn"
+run/main_scene="res://src/levels/timeTrial2.tscn"
 config/icon="res://icon.png"
 
 [autoload]
