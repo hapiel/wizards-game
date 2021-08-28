@@ -16,7 +16,7 @@ func _on_Button_time_trial_pressed():
 
 
 func _on_Button_jump_challenge_pressed():
-	get_tree().change_scene("res://src/Levels/JumpChallenge.tscn")
+	get_tree().change_scene("res://src/Levels/BouncyCastle.tscn")
 
 
 func _on_Button_exit_pressed():
