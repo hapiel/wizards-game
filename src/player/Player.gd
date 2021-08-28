@@ -24,6 +24,7 @@ onready var wall_jump_ray_back = $WallJumpRayBack
 onready var ice_ray_down = $IceRayDown
 onready var just_wall_jumped_left_timer = $JustWallJumpedLeftTimer
 onready var just_wall_jumped_right_timer = $JustWallJumpedRightTimer
+onready var disable_x_input_timer = $DisableXinputTimer
 
 func _process(delta):
 	if Input.is_action_just_pressed("move_jump"):
@@ -52,25 +53,26 @@ func update_velocity_x(dt):
 #	velocity.x = max_speed * get_input_direction()
 
 	# accelerating:
-	if get_input_direction() != 0:
-		#moving the direction the player wants to go
-		if sign(velocity.x) == get_input_direction():
-			velocity.x += acceleration * get_input_direction() * dt
+	if not disable_x_input_timer.time_left > 0:
+		if get_input_direction() != 0:
+			#moving the direction the player wants to go
+			if sign(velocity.x) == get_input_direction():
+				velocity.x += acceleration * get_input_direction() * dt
+			else:
+				#brake faster
+				velocity.x = lerp(velocity.x, 0, slowdown_rate)
+				if abs(velocity.x) < 30:
+					velocity.x = 0 
+				velocity.x += acceleration * get_input_direction() * dt
+			
+			if velocity.x > max_speed:
+				velocity.x = max_speed
+			elif velocity.x < -max_speed:
+				velocity.x = -max_speed
 		else:
-			#brake faster
 			velocity.x = lerp(velocity.x, 0, slowdown_rate)
 			if abs(velocity.x) < 30:
 				velocity.x = 0 
-			velocity.x += acceleration * get_input_direction() * dt
-		
-		if velocity.x > max_speed:
-			velocity.x = max_speed
-		elif velocity.x < -max_speed:
-			velocity.x = -max_speed
-	else:
-		velocity.x = lerp(velocity.x, 0, slowdown_rate)
-		if abs(velocity.x) < 30:
-			velocity.x = 0 
 		
 		
 	pass

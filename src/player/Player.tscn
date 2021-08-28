@@ -934,4 +934,8 @@ enabled = true
 cast_to = Vector2( 0, 10 )
 collide_with_areas = true
 
+[node name="DisableXinputTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="timeout" from="LateJumpTimer" to="StateMachine/Run" method="_on_LateJumpTimer_timeout"]
