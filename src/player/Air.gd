@@ -24,6 +24,8 @@ func physics_update(delta: float) -> void:
 	# Horizontal movement, a bit slower
 	owner.update_velocity_x(delta * 0.8)
 	
+	
+	
 	# walljump
 	if owner.early_jump_timer.time_left > 0 and check_wall():
 		owner.early_jump_timer.stop()
@@ -76,23 +78,26 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("Run", {landing = true})
 	else:
 		#handle animations
-		if abs(owner.velocity.x) < 240:
-			if owner.velocity.y > 250:
-				owner.animation_player.play("air_down")
-			elif owner.velocity.y < -100:
-				owner.animation_player.play("air_up")
-			else:	
-				if !(owner.animation_player.get_current_animation() == "air_top"):
-					owner.animation_player.play("air_top")
+		if check_wall() && owner.velocity.y > -50:
+			owner.animation_player.play("wall")
 		else:
-			if owner.velocity.y > 250:
-				owner.animation_player.play("air_down_front")
-			elif owner.velocity.y < -100:
-				owner.animation_player.play("air_up_front")
-			else:	
-				if !(owner.animation_player.get_current_animation() == "air_top_front"):
-					owner.animation_player.play("air_top_front")
-					
+			if abs(owner.velocity.x) < 240:
+				if owner.velocity.y > 250:
+					owner.animation_player.play("air_down")
+				elif owner.velocity.y < -100:
+					owner.animation_player.play("air_up")
+				else:	
+					if !(owner.animation_player.get_current_animation() == "air_top"):
+						owner.animation_player.play("air_top")
+			else:
+				if owner.velocity.y > 250:
+					owner.animation_player.play("air_down_front")
+				elif owner.velocity.y < -100:
+					owner.animation_player.play("air_up_front")
+				else:	
+					if !(owner.animation_player.get_current_animation() == "air_top_front"):
+						owner.animation_player.play("air_top_front")
+						
 
 func check_wall():
 	if owner.wall_jump_ray_front.is_colliding():
