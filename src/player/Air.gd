@@ -25,7 +25,8 @@ func physics_update(delta: float) -> void:
 	owner.update_velocity_x(delta * 0.8)
 	
 	# walljump
-	if Input.is_action_just_pressed("move_jump") and check_wall():
+#	if Input.is_action_just_pressed("move_jump") and check_wall():
+	if owner.early_jump_timer.time_left > 0 and check_wall():
 		owner.velocity.y = -owner.jump_force*0.90
 		if owner.get_flip_h():
 			# check_wall will invert the value if you're already in the right direction
