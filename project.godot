@@ -159,6 +159,10 @@ enabled=PoolStringArray( "res://addons/Godoxel/plugin.cfg" )
 
 singletons=[ "res://git_api.gdnlib" ]
 
+[global]
+
+collision=false
+
 [importer_defaults]
 
 texture={
@@ -252,6 +256,7 @@ reload={
 2d_physics/layer_5="spell"
 2d_physics/layer_6="enemy_top (temp?)"
 2d_physics/layer_7="object"
+2d_physics/layer_11="ice"
 
 [physics]
 

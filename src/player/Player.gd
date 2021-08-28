@@ -2,7 +2,8 @@ extends "res://src/misc/flipping/FlippableKinematic2D.gd"
 
 export var max_speed = 180
 export var acceleration = 300
-export var slowdown_rate = 0.08
+export var slowdown_rate_default = 0.08
+var slowdown_rate = slowdown_rate_default
 export var jump_force = 250
 export var jump_limiter = 0.4 # release jump key to go to force * limiter speed.
 export var jump_gravity_reduct = 0.3 # reduction of gravity during jump up.
@@ -20,12 +21,19 @@ onready var animation_player = $AnimationPlayer
 onready var early_jump_timer = $EarlyJumpTimer
 onready var wall_jump_ray_front = $WallJumpRayFront
 onready var wall_jump_ray_back = $WallJumpRayBack
+onready var ice_ray_down = $IceRayDown
 
 func _process(delta):
 	if Input.is_action_just_pressed("move_jump"):
 		early_jump_timer.start()
 	if Input.is_action_just_released("move_jump"):
 		early_jump_timer.stop()
+		
+	# are we on ice?
+	if ice_ray_down.is_colliding():
+		slowdown_rate = slowdown_rate_default / 4
+	else:
+		slowdown_rate = slowdown_rate_default
 
 	
 func get_input_direction():
