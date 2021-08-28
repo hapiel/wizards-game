@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/graphics/placeholders/bounce.png" type="Texture" id=4]
 [ext_resource path="res://src/object/BouncyPad.gd" type="Script" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 11.9847, 11.9903 )
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -22,7 +22,6 @@ position = Vector2( 47.8644, 215.258 )
 
 [node name="PurpleParallaxBackground" parent="." instance=ExtResource( 3 )]
 
-<<<<<<< HEAD
 [node name="BouncyPad" type="StaticBody2D" parent="."]
 position = Vector2( 1385, 336 )
 script = ExtResource( 5 )
@@ -31,7 +30,7 @@ script = ExtResource( 5 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BouncyPad"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="TopChecker" type="Area2D" parent="BouncyPad"]
 collision_mask = 2
@@ -43,6 +42,5 @@ one_way_collision = true
 one_way_collision_margin = 0.0
 
 [connection signal="body_entered" from="BouncyPad/TopChecker" to="BouncyPad" method="_on_TopChecker_body_entered"]
-=======
+
 [editable path="PlayerWithAccessories"]
->>>>>>> b84711789bb13fe19d7c1a3893a10b45420569ce
