@@ -20,3 +20,8 @@ func _process(delta):
 		OS.set_window_size(Vector2(
 			ProjectSettings.get_setting("display/window/size/width") * 3,
 			ProjectSettings.get_setting("display/window/size/height") * 3)) 
+	
+	
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene("res://src/Levels/MainMenu.tscn")
+	
