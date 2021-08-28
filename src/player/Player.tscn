@@ -608,7 +608,7 @@ max_speed = 300
 position = Vector2( 4, -16 )
 texture = ExtResource( 8 )
 hframes = 8
-vframes = 7
+vframes = 8
 frame = 40
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
