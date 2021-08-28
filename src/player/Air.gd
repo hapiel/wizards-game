@@ -15,6 +15,7 @@ func enter(_msg := {}) -> void:
 		
 	if _msg.has("do_jump"):
 		owner.velocity.y = -owner.jump_force
+		owner.sound_jump.play();
 
 
 func physics_update(delta: float) -> void:
@@ -30,6 +31,7 @@ func physics_update(delta: float) -> void:
 	if owner.early_jump_timer.time_left > 0 and check_wall():
 		owner.early_jump_timer.stop()
 		owner.velocity.y = -owner.jump_force*0.90
+		owner.sound_jump.play();
 		if owner.get_flip_h():
 			# check_wall will invert the value if you're already in the right direction
 			owner.velocity.x = 180 * check_wall()
@@ -87,6 +89,7 @@ func physics_update(delta: float) -> void:
 				elif owner.velocity.y < -100:
 					owner.animation_player.play("air_up")
 				else:	
+					owner.sound_jump.stop()
 					if !(owner.animation_player.get_current_animation() == "air_top"):
 						owner.animation_player.play("air_top")
 			else:
@@ -100,10 +103,11 @@ func physics_update(delta: float) -> void:
 						
 
 func check_wall():
-	if owner.wall_jump_ray_front.is_colliding():
-		return 1
-	if owner.wall_jump_ray_back.is_colliding():
-		return -1
-	else:
-		return 0
+	if !owner.wall_jump_block_ray.is_colliding():
+		if owner.wall_jump_ray_front.is_colliding():
+			return 1
+		if owner.wall_jump_ray_back.is_colliding():
+			return -1
+		else:
+			return 0
 	

@@ -22,9 +22,11 @@ onready var early_jump_timer = $EarlyJumpTimer
 onready var wall_jump_ray_front = $WallJumpRayFront
 onready var wall_jump_ray_back = $WallJumpRayBack
 onready var ice_ray_down = $IceRayDown
+onready var wall_jump_block_ray = $WallJumpBlockRay
 onready var just_wall_jumped_left_timer = $JustWallJumpedLeftTimer
 onready var just_wall_jumped_right_timer = $JustWallJumpedRightTimer
 onready var disable_x_input_timer = $DisableXinputTimer
+onready var sound_jump = $Audio/SoundJump
 
 func _process(delta):
 	if Input.is_action_just_pressed("move_jump"):
