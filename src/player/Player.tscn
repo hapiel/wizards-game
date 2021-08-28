@@ -632,6 +632,12 @@ position = Vector2( 6, -7 )
 enabled = true
 cast_to = Vector2( 1, 0 )
 
+[node name="IceRayDown" type="RayCast2D" parent="."]
+position = Vector2( 2, 0 )
+enabled = true
+cast_to = Vector2( 0, 5 )
+collision_mask = 1024
+
 [node name="WallJumpRayBack" type="RayCast2D" parent="."]
 position = Vector2( -2, -7 )
 enabled = true
