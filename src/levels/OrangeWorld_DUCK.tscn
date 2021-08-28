@@ -22,6 +22,7 @@ position = Vector2( 47.8644, 215.258 )
 
 [node name="PurpleParallaxBackground" parent="." instance=ExtResource( 3 )]
 
+<<<<<<< HEAD
 [node name="BouncyPad" type="StaticBody2D" parent="."]
 position = Vector2( 1385, 336 )
 script = ExtResource( 5 )
@@ -42,3 +43,6 @@ one_way_collision = true
 one_way_collision_margin = 0.0
 
 [connection signal="body_entered" from="BouncyPad/TopChecker" to="BouncyPad" method="_on_TopChecker_body_entered"]
+=======
+[editable path="PlayerWithAccessories"]
+>>>>>>> b84711789bb13fe19d7c1a3893a10b45420569ce
