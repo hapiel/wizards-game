@@ -21,3 +21,4 @@ func _on_TopChecker_body_entered(body):
 	if body.is_in_group("player"):
 		body.get_node("StateMachine").transition_to("Air")
 		body.velocity.y -= jump_boost
+		$AnimationPlayer.play("Chap_Bounce")

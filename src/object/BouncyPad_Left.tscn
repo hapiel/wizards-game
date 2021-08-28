@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/object/BouncyPad_Horizontal.gd" type="Script" id=1]
-[ext_resource path="res://assets/graphics/placeholders/bounce.png" type="Texture" id=2]
+[ext_resource path="res://assets/graphics/chapeau_claque_edit.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 11.9847, 11.9903 )
@@ -14,18 +14,25 @@ script = ExtResource( 1 )
 push_boost = -400
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.999989, 1.71661e-05 )
 rotation = 4.71239
 texture = ExtResource( 2 )
+hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 6, 0 )
+scale = Vector2( 0.5, 1 )
 shape = SubResource( 1 )
 
 [node name="SideChecker" type="Area2D" parent="."]
+position = Vector2( 5.00001, 1.71661e-05 )
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SideChecker"]
-position = Vector2( -12, 0 )
+position = Vector2( -5, 0 )
 shape = SubResource( 2 )
 one_way_collision_margin = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="body_entered" from="SideChecker" to="." method="_on_SideChecker_body_entered"]
