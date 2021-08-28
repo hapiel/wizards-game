@@ -12,11 +12,11 @@ func _ready():
 
 
 func _on_Button_time_trial_pressed():
-	get_tree().change_scene("res://src/Levels/timeTrial2.tscn")
+	get_tree().change_scene("res://src/levels/timeTrial2.tscn")
 
 
 func _on_Button_jump_challenge_pressed():
-	get_tree().change_scene("res://src/Levels/BouncyCastle.tscn")
+	get_tree().change_scene("res://src/levels/BouncyCastle.tscn")
 
 
 func _on_Button_exit_pressed():
