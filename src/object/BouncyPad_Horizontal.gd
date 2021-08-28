@@ -20,3 +20,5 @@ func _on_SideChecker_body_entered(body):
 	if body.is_in_group("player"):
 		body.velocity.x += push_boost
 		body.get_node("DisableXinputTimer").start()
+		$AnimationPlayer.play("Chap_Bounce")
+		$Sound.play() 

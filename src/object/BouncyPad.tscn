@@ -41,7 +41,7 @@ anims/Chap_Bounce = SubResource( 1 )
 position = Vector2( 0, -13 )
 texture = ExtResource( 2 )
 hframes = 10
-frame = 1
+frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -6 )
