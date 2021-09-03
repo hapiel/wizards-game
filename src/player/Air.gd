@@ -29,6 +29,10 @@ func physics_update(delta: float) -> void:
 	
 	# walljump
 	if owner.early_jump_timer.time_left > 0 and check_wall():
+		
+		# Gives players less controll over walljumps but makes them much mor consistent
+		owner.disable_x_input_timer.start()
+		
 		owner.early_jump_timer.stop()
 		owner.velocity.y = -owner.jump_force*0.90
 		owner.sound_jump.play();
