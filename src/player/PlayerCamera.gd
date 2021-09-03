@@ -5,10 +5,13 @@ export var look_ahead_factor = 0.2
 # look ahead shift in direction
 const SHIFT_TRANS = Tween.TRANS_SINE
 const SHIFT_EASE = Tween.EASE_OUT
-export var shift_duration = 0.8
+export var shift_duration = 1.2
+export var camera_deadzone = 48
 
 
 var facing = 0
+var old_player_position_x = 0
+var should_tween = false
 
 onready var prev_camera_pos = get_camera_position()
 onready var tween = $ShiftTween
@@ -27,7 +30,12 @@ func _physics_process(delta):
 func check_facing():
 	var new_facing = sign(player.velocity.x)
 	if new_facing != 0 && facing != new_facing:
+		old_player_position_x = player.position.x
+		should_tween = true
 		facing = new_facing
+		tween.stop(self)
+	if should_tween && abs(old_player_position_x - player.position.x) > camera_deadzone:
+		should_tween = false
 		var target_offset = get_viewport_rect().size.x * facing * look_ahead_factor
 		tween.interpolate_property(self, "position:x", position.x, target_offset, shift_duration, SHIFT_TRANS, SHIFT_EASE)
 		tween.start()
