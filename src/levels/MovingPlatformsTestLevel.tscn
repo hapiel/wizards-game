@@ -32,27 +32,27 @@ position = Vector2( 300, -240 )
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 5 )]
 position = Vector2( 180, 312 )
-move_to = Vector2( 0, -120 )
+move_to = Vector2( 0, -10 )
 duration = 2.5
 
 [node name="MovingPlatform2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 180, 192 )
-move_to = Vector2( 192, 0 )
+move_to = Vector2( 16, 0 )
 duration = 2.5
 
 [node name="MovingPlatform3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 372, 192 )
-move_to = Vector2( 0, -132 )
+move_to = Vector2( 0, -11 )
 duration = 2.5
 
 [node name="MovingPlatform4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 276, -12 )
 rotation = 1.5708
-move_to = Vector2( -132, 0 )
+move_to = Vector2( -11, 0 )
 duration = 2.0
 
 [node name="MovingPlatform5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 336, -12 )
 rotation = 1.5708
-move_to = Vector2( -132, 0 )
+move_to = Vector2( -11, 0 )
 duration = 2.0
