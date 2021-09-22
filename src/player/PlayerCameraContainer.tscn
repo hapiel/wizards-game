@@ -20,3 +20,7 @@ editor_draw_screen = false
 script = ExtResource( 1 )
 
 [node name="ShiftTween" type="Tween" parent="PlayerCamera"]
+
+[node name="Timer" type="Timer" parent="PlayerCamera"]
+wait_time = 4.0
+one_shot = true

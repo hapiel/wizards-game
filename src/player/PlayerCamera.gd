@@ -16,6 +16,7 @@ var should_tween = false
 onready var prev_camera_pos = get_camera_position()
 onready var tween = $ShiftTween
 onready var player = get_tree().get_nodes_in_group("player")[0]
+onready var turn_timer = $Timer
 
 func _ready():
 	# adjust limits based on tilemaps in scene
@@ -34,7 +35,8 @@ func check_facing():
 		should_tween = true
 		facing = new_facing
 		tween.stop(self)
-	if should_tween && abs(old_player_position_x - player.position.x) > camera_deadzone:
+		turn_timer.start()
+	if should_tween && abs(old_player_position_x - player.position.x) > camera_deadzone * (turn_timer.time_left/4):
 		should_tween = false
 		var target_offset = get_viewport_rect().size.x * facing * look_ahead_factor
 		tween.interpolate_property(self, "position:x", position.x, target_offset, shift_duration, SHIFT_TRANS, SHIFT_EASE)

@@ -6,7 +6,6 @@ onready var ray_cast = get_node("../../DuckRayCast2D")
 func enter(_msg := {}) -> void:
 	# We must declare all the properties we access through `owner` in the `Player.gd` script.
 #	owner.velocity = Vector2.ZERO
-	ray_cast.set_cast_to(Vector2(0, -10))
 	owner.animation_player.play("duck")
 
 

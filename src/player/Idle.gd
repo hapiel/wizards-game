@@ -2,6 +2,7 @@ extends State
 
 export(NodePath) onready var early_jump_timer = get_node(early_jump_timer)
 export(NodePath) onready var landing_timer = get_node(landing_timer)
+onready var duck_ray_cast = get_node("../../DuckRayCast2D")
 
 # Upon entering the state, we set the Player node's velocity to zero.
 func enter(_msg := {}) -> void:
@@ -19,7 +20,6 @@ func enter(_msg := {}) -> void:
 			owner.animation_player.animation_set_next("landing_small", "idle")
 
 
-var test = 0
 func physics_update(delta: float) -> void:
 	
 	owner.update_velocity_x(delta)
@@ -47,5 +47,5 @@ func physics_update(delta: float) -> void:
 
 	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		state_machine.transition_to("Run")
-	elif Input.is_action_pressed("move_down"):
+	elif Input.is_action_pressed("move_down") or duck_ray_cast.is_colliding():
 		state_machine.transition_to("Duck")
